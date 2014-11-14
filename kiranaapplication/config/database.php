@@ -48,9 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'root';
+$db['default']['hostname'] = 'techetouch-techetouch.rhcloud.com';
+$db['default']['username'] = 'adminhNPIFIy';
+$db['default']['password'] = 'BWLXJzAFyGLf';
 $db['default']['database'] = 'kiranaonline';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
