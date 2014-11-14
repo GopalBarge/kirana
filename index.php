@@ -16,7 +16,7 @@
 
 </script>
 </head>
-<body>
+<body>gopal
 <?php
 $item_varities = "100 gm:100,150 gm:150,500 gm:400";
 $item_verity = explode(",",$item_varities);
