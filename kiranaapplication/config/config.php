@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= "http://localhost/kiranaonline";
+$config['base_url']	= "http://kiranaonline-techetouch.rhcloud.com/";
 define("RECORDS_PER_PAGE","3");
 /*
 |--------------------------------------------------------------------------
