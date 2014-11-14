@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '127.9.55.2:3306';
+$db['default']['hostname'] = 'mysql://127.9.55.2:3306';
 $db['default']['username'] = 'admin5WpNwEn';
 $db['default']['password'] = 'sA4rxgUJ7mkX';
 $db['default']['database'] = 'kiranaonline';
