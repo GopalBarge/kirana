@@ -159,12 +159,24 @@ class admin_model extends CI_Model {
 		
 		function getProductDetails($id)
 		{
-				
+
 				$this->db->select("*");
 				$this->db->where('item_id',$id);
 				$result = $this->db->get('ko_items');
 				if($result->num_rows()>0)
 				return $result->row();
+				else
+				return 'empty';
+
+		}
+        	function getProductVerities($id)
+		{
+
+				$this->db->select("*");
+				$this->db->where('item_id',$id);
+				$result = $this->db->get('ko_item_verity');
+				if($result->num_rows()>0)
+				return $result->result();
 				else
 				return 'empty';
 
@@ -216,12 +228,9 @@ class admin_model extends CI_Model {
 
 	function add_product($options)
 		{
-		
-		
-			
 			$data = array(
 			"cat_id" 		=> $options['cat_id'],
-            "mfg_id" 		=> $options['mfg_id'], 
+            "mfg_id" 		=> $options['mfg_id'],
 			"item_name" 	=> $options['title'],
 			"item_price" 	=> $options['price'],
             "item_list_price" 	=> $options['list_price'],
@@ -233,55 +242,77 @@ class admin_model extends CI_Model {
 		
 					$this->db->insert('ko_items',$data);
 					$item_id = $this->db->insert_id();
-			
-			$item_verities_str = $options['item_verity'];
+                   $this->add_product_varity($item_id,$options);
+
+
+			return $item_id;
+		}
+		    /*This function adds the product varities or versions*/
+        function add_product_varity($item_id,$options)
+        {
+            $string = $options['item_verity'];
+             $item_verities_str   = rtrim($string, ", \t\n");
+
 		    $item_verits_arr = explode(",",$item_verities_str);
 			foreach($item_verits_arr as $item_verity)
 			 {
 				$verity =  explode(":",$item_verity);
 				$data = array(
-				"item_id"	=> $item_id,
-				"name" => $verity[0],
-				"price" => $verity[1]
+				"item_id"	=> trim($item_id),
+				"name" => trim($verity[0]),
+				"price" => trim($verity[1])
 				);
 				$this->db->insert('ko_item_verity',$data);
 			}
-			
-			return $item_id;
-		}
-		
-		
+        }
+             /*This function adds the product varities or versions*/
+        function delete_product_varity($item_id)
+        {
+        $this->db->where('item_id',$item_id);
+		$this->db->delete('ko_item_verity');
+        }
+
 	function delete_product($product_id)
 	{
 		
 		$this->db->where('item_id',$product_id);
 		$this->db->delete('ko_items');
-		
+
 		$url = base_url()."index.php/admin/products";
 		header("Location:$url");
-		
+
 	}
-	
+    function update_product_varity($options,$item_id)
+       {
+         $this->delete_product_varity($item_id);
+         $this->add_product_varity($item_id, $options);
+       }
+
 	function update_product($options)
 	{
 		$item_id = $options['item_id'];
 		$data = array(
-			"cat_id" 		=> $options['cat_id'],
+		   	"cat_id" 		=> $options['cat_id'],
+            "mfg_id" 		=> $options['mfg_id'],
 			"item_name" 	=> $options['title'],
 			"item_price" 	=> $options['price'],
-			"item_desc" 	=> $options['desc'],
+            "item_list_price" 	=> $options['list_price'],
+            "item_unit" 	=> $options['prod_unit'],
+			"item_desc_short" 	=> $options['short_desc'],
+            "item_desc_detailed" 	=> $options['detailed_desc'],
 			"item_stock" 	=> $options['stock']
 			);
 			$this->db->where('item_id',$item_id);
 			$this->db->update('ko_items',$data);
-			
-			
+
+            $this->update_product_varity($options,$item_id);
 			//$url = base_url()."index.php/admin/products";
 			//header("Location:$url");
-		
-		
+
+
 	}
-	
+
+
 	function update_image_links($big_image,$medium, $thumbnail,$id)
 	{
 		

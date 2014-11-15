@@ -27,6 +27,15 @@ foreach($item_verity as $category)
 					}
 					 
 ?>
+<?php
+$username = "b11_15544153";
+$password = "indiaismine";
+$hostname = "sql308.byethost11.com"; 
 
+//connection to the database
+$dbhandle = mysql_connect($hostname, $username, $password) 
+  or die("Unable to connect to MySQL");
+echo "Connected to MySQL<br>";
+?>
  </body>
 </html>

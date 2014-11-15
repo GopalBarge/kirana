@@ -24,23 +24,28 @@
 				      <label>Product Title:</label>
 				      <input name="title" type="text" id="title" value="<?php echo $product->item_name;?>"/>
 			        </p>
-				    <p>
-				      <label>Product Sale Price:</label>
-				      <input name="price" type="text" id="price" value="<?php echo $product->item_price;?>"/>
-                  per
-                      <select name="prod_unit" id="prod_unit" class="small">
+                    <p>
+				      <label>Manufacturer:</label>
+				      <select name="mfg_id" id="mfg_id" class="big">
                       <?php
 
-					 $units = $this->admin_model->getAllProductUnits();
-					 foreach($units as $unit)
+					 $manufacturers = $this->admin_model->getAllManufacturers();
+					 foreach($manufacturers as $manufacturer)
 					 {
 					 ?>
-				      	<option value="<?php echo $unit->name; ?>"><?php echo $unit->name; ?></option>
+				      	<option value="<?php echo $manufacturer->Id; ?>"><?php echo $manufacturer->mfg_name; ?></option>
 
                       <?php
 					  }
 					  ?>
 			          </select>
+			        </p>
+				    <p>
+				      <label>Product Sale Price:</label>
+				      <input name="price" type="text" id="price" value="<?php echo $product->item_price;?>"/>
+                  per
+                      <input name="prod_unit" id="prod_unit" value="<?php echo $product->item_unit;?>">
+                     
                    </p>
                    <p>
 				      <label>Product List Price:</label>
@@ -48,11 +53,12 @@
                     </p>
 				    <p>
 				      <label>Stock:</label>
-				      <input name="item_stock" type="text" id="item_stock" value="<?php echo $product->item_stock;?>"/>
+				      <input name="stock" type="text" id="item_stock" value="<?php echo $product->item_stock;?>"/>
 			        </p>
 				    <p>
 				      <label>Photo:</label>
-				      <input type="file" name="file" id="file" />
+					  <img src="<?php echo base_url();?>	<?php echo $product->thumbnail;?>" alt="" />
+				      <input type="file" name="file" id="file" value="<?php echo base_url();?>	<?php echo $product->thumbnail;?>"/>
 			        </p>
 				    <p>
 				      <label>Category:</label>
@@ -73,12 +79,22 @@
 			        </p>
 				    <p>
 				      <label>Short Description:</label>
-				      <textarea name="item_desc_short" id="item_desc_short"><?php echo $product->item_desc_short;?></textarea>
+				      <textarea name="short_desc" id="item_desc_short"><?php echo $product->item_desc_short;?></textarea>
 			        </p>
                     <p>
 				      <label>Detailed Description:</label>
-				      <textarea name="item_desc_detailed" id="item_desc_detailed"><?php echo $product->item_desc_detailed;?></textarea>
+				      <textarea name="detailed_desc" id="item_desc_detailed"><?php echo $product->item_desc_detailed;?></textarea>
 			        </p>
+                     <p>
+				      <label>Product Varities:</label>
+
+				      <textarea name="item_verity" id="item_verity">
+                       <?php
+                             foreach($product_varity as $varities)
+					 {echo $varities->name;?>:<?php echo $varities->price;?>,<?php } ?>
+                      </textarea>
+			        </p>
+
 				    <input type="submit" name="submit" value="Edit Product" />
                     <input type="hidden" name="action" value="1" />
                     <input type="hidden" name="item_id" value="<?php echo $this->uri->segment(3);?>" />

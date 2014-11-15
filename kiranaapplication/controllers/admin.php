@@ -239,8 +239,6 @@ class Admin extends CI_Controller {
 	
 	function add_product()
 	{			
-					
-
 		if($this->input->post('action')=='') $this->load->view('admin/add_product');
 		else 
 		{
@@ -258,11 +256,13 @@ class Admin extends CI_Controller {
 				if ($this->form_validation->run() == FALSE)   $this->load->view("admin/add_product");
 				else 
 				{
-					
+
 					$id = $this->admin_model->add_product($this->input->post());
+                     if($_FILES['file']['name']!='')
+					{
 					include("lib/imageManipulation.php");
 					include("lib/resize-class.php");
-					
+
 					$type		=	substr(strtolower($_FILES['file']['name']),-4);
 					$img_name	= 	substr($this->input->post('title'),0,20);
 					$img_name 	= 	str_replace(" ","_",$img_name) ."_". $id;
@@ -285,7 +285,8 @@ class Admin extends CI_Controller {
 							
 					
 					$this->admin_model->update_image_links($big_image,$med_image,$thumbnail,$id);
-					$url = base_url()."index.php/admin/products";
+                }
+                $url = base_url()."index.php/admin/products";
 					header("Location:$url");
 					exit();
 				}
@@ -305,12 +306,13 @@ class Admin extends CI_Controller {
 
 
 	function edit_product()
-	{			
+	{
 							
 							
-		if($this->input->post('action')=='') 
+		if($this->input->post('action')=='')
 		{
 				$data['product'] = $this->admin_model->getProductDetails($this->uri->segment(3));
+                $data['product_varity'] = $this->admin_model->getProductVerities($this->uri->segment(3));
 				$this->load->view('admin/edit_product',$data);
 		}
 		else 
@@ -325,11 +327,11 @@ class Admin extends CI_Controller {
 				$this->form_validation->set_rules('short_desc', 'short description', 'trim|required');
                 $this->form_validation->set_rules('detailed_desc', 'detailed description', 'trim|required');
 
-
 				if ($this->form_validation->run() == FALSE)   $this->load->view("admin/edit_product");
 				else 
 				{
 					$this->admin_model->update_product($this->input->post());
+
 					if($_FILES['file']['name']!='')
 					{
 					include("lib/imageManipulation.php");
