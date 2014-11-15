@@ -90,8 +90,12 @@
 
 				      <textarea name="item_verity" id="item_verity">
                        <?php
-                             foreach($product_varity as $varities)
-					 {echo $varities->name;?>:<?php echo $varities->price;?>,<?php } ?>
+                       if(is_array($product_varity)) {
+                        foreach($product_varity as $varities)
+					 {
+                       echo $varities->name;?>:<?php echo $varities->price;?>,
+                       <?php
+                      } }?>
                       </textarea>
 			        </p>
 

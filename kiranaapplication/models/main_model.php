@@ -23,7 +23,7 @@ class main_model extends CI_Model {
 		{
 				
 				$this->db->select("*");
-				$this->db->limit(5,0);
+			   	$this->db->limit(50,0);  
 				$this->db->order_by('item_id','DESC');
 				$result = $this->db->get('ko_items');
 				if($result->num_rows()>0)

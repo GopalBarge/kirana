@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title></title>
 	<link rel="stylesheet" href="<?php echo base_url();?>css/main.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/header.css" type="text/css">
 	</head>
 <body>
 	<div id="wrapper">
@@ -20,7 +21,6 @@
 						$i=1;
 						foreach ($home_products as $product)
 						{
-						
 							?>
 							<div class="item <?php if($i%3==0) echo 'no-margin-right';?>">
 							<div class="photo"><img src="<?php echo base_url().$product->medium_image;?>" alt="<?php echo $product->item_name; ?>" /></div>

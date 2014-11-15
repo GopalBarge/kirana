@@ -252,7 +252,7 @@ class admin_model extends CI_Model {
         {
             $string = $options['item_verity'];
              $item_verities_str   = rtrim($string, ", \t\n");
-
+                    if($item_verities_str != '' && $item_verities_str != null)    {
 		    $item_verits_arr = explode(",",$item_verities_str);
 			foreach($item_verits_arr as $item_verity)
 			 {
@@ -264,7 +264,7 @@ class admin_model extends CI_Model {
 				);
 				$this->db->insert('ko_item_verity',$data);
 			}
-        }
+        }    }
              /*This function adds the product varities or versions*/
         function delete_product_varity($item_id)
         {

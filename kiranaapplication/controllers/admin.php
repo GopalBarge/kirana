@@ -290,7 +290,7 @@ class Admin extends CI_Controller {
 					header("Location:$url");
 					exit();
 				}
-			
+
 		}
 		
 	}
@@ -307,7 +307,7 @@ class Admin extends CI_Controller {
 
 	function edit_product()
 	{
-							
+
 							
 		if($this->input->post('action')=='')
 		{
@@ -315,7 +315,7 @@ class Admin extends CI_Controller {
                 $data['product_varity'] = $this->admin_model->getProductVerities($this->uri->segment(3));
 				$this->load->view('admin/edit_product',$data);
 		}
-		else 
+		else
 		{
 
                 $this->form_validation->set_rules('title', 'product name', 'trim|required|min_length[3]|max_length[30]');
