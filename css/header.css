@@ -1,0 +1,14 @@
+#header {
+background-image: url("../images/logo2.png");
+    background-repeat: repeat-x;
+    vertical-align: top;
+}
+#catmenu  {
+    float: left;
+    display: inline-block;
+}
+#logo img.center {
+   display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}

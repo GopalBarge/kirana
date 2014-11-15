@@ -4,7 +4,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title></title>
 	<link rel="stylesheet" href="<?php echo base_url();?>css/main.css" type="text/css">
-	</head>
+
+    </head>
 <body>
 	<div id="wrapper">
 			<?php include("header.php"); ?>

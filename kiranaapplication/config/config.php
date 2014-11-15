@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= "http://192.168.1.4/kiranaonline";
+$config['base_url']	= "http://192.168.43.47/kiranaonline";  //"http://192.168.1.4/kiranaonline";
 define("RECORDS_PER_PAGE","3");
 /*
 |--------------------------------------------------------------------------

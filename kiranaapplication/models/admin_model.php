@@ -174,7 +174,7 @@ class admin_model extends CI_Model {
 
 				$this->db->select("*");
 				$this->db->where('item_id',$id);
-				$result = $this->db->get('ko_item_verity');
+				$result = $this->db->get('ko_item_variant');
 				if($result->num_rows()>0)
 				return $result->result();
 				else
@@ -262,14 +262,14 @@ class admin_model extends CI_Model {
 				"name" => trim($verity[0]),
 				"price" => trim($verity[1])
 				);
-				$this->db->insert('ko_item_verity',$data);
+				$this->db->insert('ko_item_variant',$data);
 			}
         }    }
              /*This function adds the product varities or versions*/
         function delete_product_varity($item_id)
         {
         $this->db->where('item_id',$item_id);
-		$this->db->delete('ko_item_verity');
+		$this->db->delete('ko_item_variant');
         }
 
 	function delete_product($product_id)

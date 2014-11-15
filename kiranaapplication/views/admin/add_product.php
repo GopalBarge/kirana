@@ -4,7 +4,28 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title></title>
 	<link rel="stylesheet" href="<?php echo base_url();?>css/main.css" type="text/css">
-	</head>
+<script type="text/javascript">
+function addSizeVariant(){
+ var name = document.getElementById("variant_name").value;
+  var price = document.getElementById("variant_price").value;
+ var x = document.getElementById("variant");
+var option = document.createElement("option");
+option.text = name;
+x.add(option);
+
+document.getElementById("variant_name").value='';
+ document.getElementById("variant_price").value='';
+ var item_varity = document.getElementById("item_verity").value;
+ if(item_varity == '')
+ {
+    item_varity =  name+':'+price;
+ } else{
+ item_varity = item_varity + ','+  name+':'+price;
+ }
+  document.getElementById("item_verity").value = item_varity;
+}
+</script>
+</head>
 <body>
 	<div id="wrapper">
 			<?php include("header.php"); ?>
@@ -84,10 +105,15 @@
 				      <textarea name="detailed_desc" id="detailed_desc"><?=set_value('detailed_desc');?></textarea>
 			        </p>
 					<p>
-				      <label>Product Varities:</label>
+				      <label>Product Variant:</label>
 				      <textarea name="item_verity" id="item_verity"><?=set_value('item_verity');?></textarea>
 			        </p>
-					
+                     <p>
+				      <label>Product Variant:</label>
+                      <select name="variant" id="variant" class="big"></select>    <br />
+                      <input type="text" id="variant_name" placeholder="Item size" /> <input type="text" id="variant_price" placeholder="Item price"/> <input type="button" value="+add" onclick="addSizeVariant();"/>
+			        </p>
+
 				    <input type="submit" name="submit" value="Add Product" />
                                     <input type="hidden" name="action" value="1" />
 			      </form>

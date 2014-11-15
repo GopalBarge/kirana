@@ -78,11 +78,11 @@ h2 {
 	margin-bottom:20px
 }
 #wrapper {
-	width:920px;
+   width:920px;
 	margin:0 auto;
 }
 #header {
-	margin-top:20px;
+   margin-top:20px;
 }
 #menu {
 	margin-top:20px;
@@ -102,12 +102,13 @@ h2 {
 	margin-top:20px;
 }
 #content #left {
-	width:200px;
+   width:200px;
 	float:left;
+
 }
 #content #right {
 	width:700px;
-	float:right;
+   	float:right;
 }
 .bar {
 	background:#e9e9dd;
@@ -143,18 +144,19 @@ ul#cats li a {
 }
 /*------------------ Product Page ------------------*/
 .item {
-	width:220px;
-		float:left;
-	margin-right:20px;
-	margin-bottom:20px;
+   /*	width:220px;
+		float:left; */
+        text-align: center;
+	margin-right:5px;
+	margin-bottom:10px;
 }
 .no-margin-right {
 	margin-right:0;
 }
 .item .photo {
-	height:220px;
-	background:#ffffff;
-	margin-bottom:10px;
+	/*height:220px;
+	background:#ffffff; */
+	margin-bottom:2px;
 }
 .item p span {
 	font-size:20px;
@@ -167,14 +169,14 @@ ul#cats li a {
 }
 .item .actions {
 	border-top:solid 1px #cdcfc1;
-	margin-top:10px;
-	padding-top:10px;
+	margin-top:2px;
+	padding-top:2px;
 }
 .add {
-	background:#b3b6a1 url(../images/button-arrow.png) no-repeat 70px center;
+  	background:#b3b6a1;
 	color:#ffffff;
 	padding:5px 20px 5px 5px;
-	float:right;
+	/*float:right; */
 	display:inline-block;
 }
 #product-left {
@@ -297,10 +299,12 @@ form#admin textarea {
 }
 #header {
 	overflow:hidden;
+
 }
 #logo {
-	float:left;
+	/*float:left; */    display: inline-block;
 }
+
 #summary {
 	float:right;
 }
